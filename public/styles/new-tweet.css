@@ -1,0 +1,38 @@
+.new-tweet {
+  overflow: auto;
+  border-radius: 10px;
+  border-color: #b1b1ae;
+  border-style: solid;
+  border-width: thin;
+  margin: 0 2em;
+  padding: 10px;
+  background-color: #eee;
+}
+
+.form {
+  width: 100%;
+}
+
+.counter {
+  float: right;
+  line-height: 200%;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0 5px 0;
+  background-color: #fff;
+}
+
+input {
+  padding: 10px;
+}
+
+.new-tweet h2 {
+  margin: 0 ;
+  padding: 5px 0;
+  border-bottom-style: solid;
+  border-bottom-width: thin;
+  border-bottom-color: black;
+}

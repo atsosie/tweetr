@@ -23,8 +23,9 @@ body {
 
 .container {
   width: 450px;
-  margin: 140px auto auto auto;
-  background-color: #FFFFFF;
+  padding: 140px 0;
+  margin: auto;
+  background-color: #fff;
 }
 
 /*
