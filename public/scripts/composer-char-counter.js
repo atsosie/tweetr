@@ -10,8 +10,13 @@
 $(document).ready(function() {
 
   $(".new-tweet textarea").on("keyup", function() {
-    let charsUsed = $(this).val().length;
-    $(this).siblings(".counter").text(charsUsed);
+    const charLimit = 140;
+    const charUsed = $(this).val().length;
+    const charRemaining = charLimit - charUsed;
+    $(this).siblings(".counter").text(charRemaining);
+    // if (charRemaining < 0) {
+    //   $("")
+    // }
   });
 
 });
