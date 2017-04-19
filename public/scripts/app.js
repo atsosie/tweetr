@@ -8,24 +8,8 @@
 
 $(document).ready(function() {
 
-  const tweetData = {
-    "user": {
-      "name": "Newton",
-      "avatars": {
-        "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-        "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-        "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-      },
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  };
 
-
-  // takes in a tweet object and returns tweet <article>
+  // take in a tweet object and return a formatted tweet <article>
   function createTweetElement (tweetData) {
     let dateCreated = moment(tweetData.created_at).fromNow();
     let formattedTweet =
@@ -48,10 +32,38 @@ $(document).ready(function() {
     return formattedTweet;
   }
 
-  const $tweet = createTweetElement(tweetData);
+  // add formatted tweet to section of past tweets
+  // *** Reverse this order, so newest tweet is first ***
+  function renderTweets(dataArr) {
+    dataArr.forEach(function(dataObj) {
+      const $tweet = createTweetElement(dataObj);
+      $("#tweet").append($tweet);
+    });
+  }
 
-  // Test / driver code (temporary)
-  console.log($tweet); // to see what it looks like
-  $("#tweet").append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+  // display submitted tweet along with all past tweets
+  function loadTweets() {
+    $.ajax({
+      url: "/tweets/",
+      method: "GET",
+      success: function(response) {
+        renderTweets(response);
+      }
+    });
+  }
+
+  // event listener for submitting new tweet
+  $("form").on("submit", function (event) {
+    console.log("form data ", $(this).serialize());
+    event.preventDefault();
+    $.ajax({
+      url: "/tweets",
+      method: 'POST',
+      data: $(this).serialize(),
+      success: loadTweets
+    });
+  });
+
+  loadTweets();
 
 });
