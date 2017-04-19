@@ -13,9 +13,9 @@
   width: 100%;
 }
 
-.counter {
+.tweet-char-counter {
   float: right;
-  line-height: 200%;
+  line-height: 40px;
 }
 
 span:out-of-range {

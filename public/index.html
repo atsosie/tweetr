@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/new-tweet.css" />
   <link rel="stylesheet" href="/styles/tweets.css"/>
-  <link rel="stylesheet" href="/public/font-awesome/css/font-awesome.min.css">
 
   <!-- External JS -->
   <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
@@ -21,6 +20,7 @@
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script src="https://use.fontawesome.com/275a88ee78.js"></script>
 </head>
 
 <body>
@@ -38,16 +38,16 @@
       <form action="/tweets/" method="POST">
         <textarea name="text" placeholder="What are you humming about?"></textarea>
         <input type="submit" value="Tweet">
-        <span class="counter" min="0" max="140">140</span>
+        <span class="tweet-char-counter" min="0" max="140">140</span>
       </form>
     </section>
 
     <section class="tweet-container">
       <article>
         <header>
-          <img class="avatar" src="/images/bird.png" />
-          <h2>Bill Fields</h2>
-          <span class="username">@MrFields</span>
+          <img class="user-avatar" src="/images/bird.png" />
+          <h2 class="user-name">Bill Fields</h2>
+          <span class="user-handle">@MrFields</span>
         </header>
         <p>Little tweet here</p>
         <footer>

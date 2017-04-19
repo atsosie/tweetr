@@ -4,7 +4,7 @@ $(document).ready(function() {
     const charLimit = 140;
     const charUsed = $(this).val().length;
     const charRemaining = charLimit - charUsed;
-    const charCount = $(this).siblings(".counter").text(charRemaining);
+    const charCount = $(".tweet-char-counter").text(charRemaining); // Why is this bad practice?
     if (charRemaining < 0) {
       charCount.addClass("error-text");
     } else {
