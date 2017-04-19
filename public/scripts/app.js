@@ -25,16 +25,8 @@ $(document).ready(function() {
   };
 
 
-  function daysAgoCreated(miliseconds) {
-    let today = new Date().getTime();
-    let milisecondsDiff = today - miliseconds;
-    let days = Math.floor(milisecondsDiff / (1000 * 60 * 60 * 24));
-    return days;
-  }
-
   // takes in a tweet object and returns tweet <article>
   function createTweetElement (tweetData) {
-    // let numberOfDays = daysAgoCreated(tweetData.created_at);
     let dateCreated = moment(tweetData.created_at).fromNow();
     let formattedTweet =
       `<article>
