@@ -21,6 +21,7 @@
   <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
   <script src="https://use.fontawesome.com/275a88ee78.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.18.1/moment.min.js"></script>
 </head>
 
 <body>
@@ -42,7 +43,7 @@
       </form>
     </section>
 
-    <section class="tweet-container">
+    <section class="tweet-container" id="tweet">
       <article>
         <header>
           <img class="user-avatar" src="/images/bird.png" />
@@ -51,13 +52,13 @@
         </header>
         <p>Little tweet here</p>
         <footer>
-          <span class="date-posted">10 days ago<span>
-            <div class="icons">
-             <span class="fa fa-flag"></span>
-             <span class="fa fa-retweet"></span>
-             <span class="fa fa-heart"></span>
-           </div>
-         </footer>
+        <div>10 days ago</div>
+        <div class="icons">
+         <span class="fa fa-flag"></span>
+         <span class="fa fa-retweet"></span>
+         <span class="fa fa-heart"></span>
+        </div>
+        </footer>
        </article>
      </section>
 
