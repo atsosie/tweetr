@@ -34,7 +34,8 @@ $(document).ready(function() {
 
   // takes in a tweet object and returns tweet <article>
   function createTweetElement (tweetData) {
-    let numberOfDays = daysAgoCreated(tweetData.created_at);
+    // let numberOfDays = daysAgoCreated(tweetData.created_at);
+    let dateCreated = moment(tweetData.created_at).fromNow();
     let formattedTweet =
       `<article>
         <header>
@@ -44,12 +45,12 @@ $(document).ready(function() {
       </header>
       <p>${tweetData.content.text}</p>
       <footer>
-        <div class="date-created">${numberOfDays} days ago</div>
-          <div>
+        <div>${dateCreated}</div>
+        <div class="icons">
         <i class="fa fa-flag" aria-hidden="true"></i>
         <i class="fa fa-retweet" aria-hidden="true"></i>
         <i class="fa fa-heart" aria-hidden="true"></i>
-          </div>
+        </div>
       </footer>
       </article>`;
     return formattedTweet;
