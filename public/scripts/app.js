@@ -8,8 +8,14 @@
 
 $(document).ready(function() {
 
+  // prevent XSS with escaping
+  function escape(str) {
+    var div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
 
-  // take in a tweet object and return a formatted tweet <article>
+
   function createTweetElement(tweetData) {
     let dateCreated = moment(tweetData.created_at).fromNow();
     let formattedTweet =
@@ -19,7 +25,7 @@ $(document).ready(function() {
         <h2 class = "user-name">${tweetData.user.name}</h2>
         <span class = "user-handle">${tweetData.user.handle}</span>
       </header>
-      <p>${tweetData.content.text}</p>
+      <p>${escape(tweetData.content.text)}</p>
       <footer>
         <div>${dateCreated}</div>
         <div class="icons">
@@ -35,7 +41,7 @@ $(document).ready(function() {
 
   // add formatted tweet to section of past tweets
   function renderTweets(dataArr) {
-    $("article").empty(); // *** After they're deleted, a bottom border remains ***
+    $(".tweet-container").empty();
     dataArr.forEach(function(dataObj) {
       const $tweet = createTweetElement(dataObj);
       $("#tweet").prepend($tweet);
@@ -43,7 +49,7 @@ $(document).ready(function() {
   }
 
 
-  // display submitted tweet along with all past tweets
+  // display all tweets
   function loadTweets() {
     $.ajax({
       url: "/tweets/",
@@ -58,7 +64,7 @@ $(document).ready(function() {
   // toggle compose tweet form
   const $composeTweet = $(".new-tweet");
 
-  $("#compose").on("click", function() {
+  $("#compose-button").on("click", function() {
     $composeTweet.slideToggle(200).find("textarea").focus();
   });
 
