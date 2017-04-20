@@ -13,7 +13,7 @@
   width: 100%;
 }
 
-.tweet-char-counter {
+.counter {
   float: right;
   line-height: 40px;
 }

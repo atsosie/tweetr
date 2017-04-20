@@ -35,9 +35,10 @@ $(document).ready(function() {
   // add formatted tweet to section of past tweets
   // *** Reverse this order, so newest tweet is first ***
   function renderTweets(dataArr) {
+    // *** Add step: clear section for tweets ***
     dataArr.forEach(function(dataObj) {
       const $tweet = createTweetElement(dataObj);
-      $("#tweet").append($tweet);
+      $("#tweet").prepend($tweet);
     });
   }
 
@@ -52,15 +53,35 @@ $(document).ready(function() {
     });
   }
 
+  // *** Add validator conditions ***
+  // function getErrorMsg() {
+  //   let charCount = $("#text").val().length;
+  //   if (charCount === 0) {
+  //     show 'flash message' about error
+  //     $(".counter")
+  //   }
+
+  //   if (/*too many characters*/) {
+
+  //   }
+
+  // }
+
   // event listener for submitting new tweet
   $("form").on("submit", function (event) {
-    console.log("form data ", $(this).serialize());
+    console.log("form data: ", $(this).serialize());
     event.preventDefault();
+
+
     $.ajax({
       url: "/tweets",
-      method: 'POST',
+      method: "POST",
       data: $(this).serialize(),
-      success: loadTweets
+      success: function() {
+        loadTweets();
+        $("#tweet-text").val("");
+        $(".counter").text("140");
+      }
     });
   });
 
