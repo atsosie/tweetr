@@ -33,7 +33,6 @@ $(document).ready(function() {
   }
 
   // add formatted tweet to section of past tweets
-  // *** Reverse this order, so newest tweet is first ***
   function renderTweets(dataArr) {
     // *** Add step: clear section for tweets ***
     dataArr.forEach(function(dataObj) {
@@ -53,25 +52,19 @@ $(document).ready(function() {
     });
   }
 
-  // *** Add validator conditions ***
-  // function getErrorMsg() {
-  //   let charCount = $("#text").val().length;
-  //   if (charCount === 0) {
-  //     show 'flash message' about error
-  //     $(".counter")
-  //   }
-
-  //   if (/*too many characters*/) {
-
-  //   }
-
-  // }
-
   // event listener for submitting new tweet
   $("form").on("submit", function (event) {
     console.log("form data: ", $(this).serialize());
     event.preventDefault();
+    let charCount = $("#tweet-text").val().length;
 
+    if (charCount === 0) {
+      alert("Oops. Try typing something before hitting submit.");
+    }
+
+    if (charCount > 140) {
+      alert("Keep your tweet under 140 characters.");
+    }
 
     $.ajax({
       url: "/tweets",
