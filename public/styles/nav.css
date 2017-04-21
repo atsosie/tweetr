@@ -1,6 +1,5 @@
 #nav-bar {
   display: inline-block;
-  flex-flow: row wrap;
   position: fixed;
   z-index: 3;
   top: 0;
@@ -28,7 +27,6 @@
 
 #compose-button {
   float: right;
-  align-self: flex-end;
   width: 130px;
   height: 50px;
   padding-top: 11px;
@@ -49,8 +47,3 @@
   transition: opacity 0.5s;
   cursor:pointer;
 }
-
-/*#compose-button i {
-  display: inline-block;
-  align-items: space-between;*/
-  /*margin-right: 10px;*/
