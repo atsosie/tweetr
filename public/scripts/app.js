@@ -4,8 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
- // Test / driver code (temporary). Eventually will get this from the server.
-
 $(document).ready(function() {
 
   // prevent XSS with escaping
@@ -65,7 +63,7 @@ $(document).ready(function() {
   const $composeTweet = $(".new-tweet");
 
   $("#compose-button").on("click", function() {
-    $composeTweet.slideToggle(200).find("textarea").focus();
+    $composeTweet.slideToggle(300).find("textarea").focus();
   });
 
 
@@ -76,12 +74,12 @@ $(document).ready(function() {
     let charCount = $("#tweet-text").val().length;
 
     if (charCount === 0) {
-      alert("Oops. Try typing something before hitting submit.");
+      $.flash("Tweet not published. Type something before hitting 'Tweet'.");
       return;
     }
 
     if (charCount > 140) {
-      alert("Keep your tweet under 140 characters.");
+      $.flash("Tweet not published. Keep it under 140 characters.");
       return;
     }
 
