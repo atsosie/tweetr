@@ -1,5 +1,4 @@
 .new-tweet {
-  overflow: auto;
   border-radius: 10px;
   border-color: #b1b1ae;
   border-style: solid;
@@ -38,5 +37,5 @@ input {
   padding: 5px 0;
   border-bottom-style: solid;
   border-bottom-width: thin;
-  border-bottom-color: black;
+  border-bottom-color: #000;
 }
